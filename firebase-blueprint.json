@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated user profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ChatLog": {
+      "title": "ChatLog",
+      "description": "Logs of user interactions with the AI chatbot",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "query": { "type": "string" },
+        "response": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["query", "response", "timestamp"]
+    },
+    "Registration": {
+      "title": "Registration",
+      "description": "Hackathon team registration data",
+      "type": "object",
+      "properties": {
+        "teamName": { "type": "string" },
+        "track": { "type": "string" },
+        "teammates": { "type": "string" },
+        "m1Name": { "type": "string" },
+        "m1Email": { "type": "string" },
+        "m1Phone": { "type": "string" },
+        "m2Name": { "type": "string" },
+        "m2Email": { "type": "string" },
+        "m2Phone": { "type": "string" },
+        "college": { "type": "string" },
+        "year": { "type": "string" },
+        "github": { "type": "string" },
+        "userUid": { "type": "string" },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["teamName", "track", "m1Name", "m1Email", "m1Phone", "college", "year", "userUid"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/chat_logs/{logId}": {
+      "schema": "ChatLog",
+      "description": "AI chatbot interaction logs"
+    },
+    "/registrations/{regId}": {
+      "schema": "Registration",
+      "description": "Hackathon registrations"
+    }
+  }
+}
